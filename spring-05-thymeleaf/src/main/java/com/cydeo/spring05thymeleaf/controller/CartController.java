@@ -31,13 +31,19 @@ public class CartController {
 
     @GetMapping("/addToCart/{productId}/{quantity}")
     public String addToCart(@PathVariable("productId")UUID productId,
-                            @PathVariable("quantity") Integer quantity,
-                            Model model){
+                            @PathVariable("quantity") Integer quantity){
 
         cartService.addToCart(productId,quantity);
-        model.addAttribute("cart",CART);
 
-        return "cart/show-cart";
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/delete/{productId}")
+    public String deleteItem(@PathVariable("productId") UUID productId){
+
+        cartService.deleteFromCart(productId);
+
+        return "redirect:/cart";
     }
 
 
