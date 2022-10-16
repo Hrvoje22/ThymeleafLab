@@ -34,8 +34,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findProductById(UUID uuid){
-        // todo implement method
-        return new Product();
+
+        return productRepository.findProductById(uuid);
     }
 
 }
